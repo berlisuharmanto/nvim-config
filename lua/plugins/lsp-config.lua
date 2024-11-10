@@ -14,6 +14,13 @@ return {
     end,
   },
   {
+    "olrtg/nvim-emmet",
+    config = function()
+      vim.keymap.set({ "n", "v" }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
+    end,
+  },
+
+  {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
@@ -21,6 +28,7 @@ return {
       lspconfig.eslint.setup({})
       lspconfig.intelephense.setup({})
       lspconfig.ts_ls.setup({})
+      lspconfig.emmet_language_server.setup({})
     end,
   },
 }
