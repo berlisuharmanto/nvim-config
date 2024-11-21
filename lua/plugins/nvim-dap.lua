@@ -1,8 +1,8 @@
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
-		"nvim-neotest/nvim-nio",
 		"rcarriga/nvim-dap-ui",
+		"nvim-neotest/nvim-nio",
 		"mxsdev/nvim-dap-vscode-js",
 		"microsoft/vscode-js-debug",
 	},
@@ -13,7 +13,7 @@ return {
 
 		require("dap-vscode-js").setup({
 			adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-      debugger_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter",
+			debugger_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter",
 		})
 
 		-- dap.adapters["pwa-node"] = {
