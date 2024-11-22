@@ -1,7 +1,7 @@
 return {
-	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
 	dependencies = {
-		"rcarriga/nvim-dap-ui",
+		"mfussenegger/nvim-dap",
 		"nvim-neotest/nvim-nio",
 		"mxsdev/nvim-dap-vscode-js",
 		"microsoft/vscode-js-debug",
@@ -12,7 +12,7 @@ return {
 		dapui.setup()
 
 		require("dap-vscode-js").setup({
-			adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+			adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost", "php" },
 			debugger_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter",
 		})
 
@@ -25,7 +25,13 @@ return {
 		-- 	-- },
 		-- }
 
-		for _, language in ipairs({ "typescript", "javascript" }) do
+    dap.adapters.php = {
+      type = "executable",
+      command = "node",
+      args = { "/home/berli/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" },
+    }
+
+		for _, language in ipairs({ "typescript", "javascript", "php" }) do
 			dap.configurations[language] = {
 				{
 					type = "pwa-node",
@@ -40,6 +46,17 @@ return {
 					name = "Attach",
 					processId = require("dap.utils").pick_process,
 					cwd = "${workspaceFolder}",
+				},
+			}
+			dap.configurations.php = {
+				{
+					type = "php",
+					request = "launch",
+					name = "Listen for xdebug",
+					port = "9003",
+					log = false,
+					serverSourceRoot = "/srv/www/",
+					localSourceRoot = "/home/berli/",
 				},
 			}
 		end
