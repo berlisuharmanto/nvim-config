@@ -44,6 +44,8 @@ return {
       lspconfig.eslint.setup({})
       lspconfig.intelephense.setup({})
       lspconfig.ts_ls.setup({})
+      lspconfig.docker_compose_language_service.setup({})
+      lspconfig.dockerls.setup({})
       lspconfig.emmet_language_server.setup({
         filetypes = {
           "css",
