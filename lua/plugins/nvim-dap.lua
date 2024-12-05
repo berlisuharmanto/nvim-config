@@ -25,11 +25,20 @@ return {
 		-- 	-- },
 		-- }
 
-    dap.adapters.php = {
-      type = "executable",
-      command = "node",
-      args = { "/home/berli/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" },
-    }
+		dap.adapters.php = {
+			type = "executable",
+			command = "node",
+			args = { "/home/berli/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" },
+		}
+		dap.adapters.codelldb = {
+			name = "codelldb server",
+			type = "server",
+			port = 5000,
+			-- executable = {
+			-- 	command = "$HOME/.local/share/nvim/mason/bin/codelldb",
+			-- 	args = { "--port", "${port}" },
+			-- },
+		}
 
 		for _, language in ipairs({ "typescript", "javascript", "php" }) do
 			dap.configurations[language] = {
@@ -57,6 +66,19 @@ return {
 					log = false,
 					serverSourceRoot = "/srv/www/",
 					localSourceRoot = "/home/berli/",
+				},
+			}
+			dap.configurations.cpp = {
+				{
+					type = "codelldb",
+					request = "launch",
+					name = "Launch CPP",
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					end,
+          --program = '${fileDirname}/${fileBasenameNoExtension}',
+					cwd = "${workspaceFolder}",
+          terminal = "integrated",
 				},
 			}
 		end

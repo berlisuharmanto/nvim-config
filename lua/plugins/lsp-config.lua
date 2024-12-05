@@ -42,7 +42,17 @@ return {
 
       lspconfig.lua_ls.setup({})
       lspconfig.eslint.setup({})
-      lspconfig.intelephense.setup({})
+      lspconfig.intelephense.setup({
+        settings = {
+          intelephense = {
+            format = {
+              enable = true,
+              braces = "allman",
+            }
+          }
+        }
+      })
+      lspconfig.clangd.setup({})
       lspconfig.ts_ls.setup({})
       lspconfig.docker_compose_language_service.setup({})
       lspconfig.dockerls.setup({})
