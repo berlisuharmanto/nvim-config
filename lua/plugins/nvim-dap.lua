@@ -3,11 +3,14 @@ return {
 	dependencies = {
 		"mfussenegger/nvim-dap",
 		"nvim-neotest/nvim-nio",
+		"jay-babu/mason-nvim-dap.nvim",
+		"williamboman/mason.nvim",
 		"mxsdev/nvim-dap-vscode-js",
 		"microsoft/vscode-js-debug",
 	},
 	config = function()
 		local dap = require("dap")
+    require("mason-nvim-dap").setup()
 		local dapui = require("dapui")
 		dapui.setup()
 
@@ -33,14 +36,14 @@ return {
 		dap.adapters.codelldb = {
 			name = "codelldb server",
 			type = "server",
-			port = 5000,
-			-- executable = {
-			-- 	command = "$HOME/.local/share/nvim/mason/bin/codelldb",
-			-- 	args = { "--port", "${port}" },
-			-- },
+			port = "${port}",
+			executable = {
+				command = "/home/berli/.local/share/nvim/mason/bin/codelldb",
+				args = { "--port", "${port}" },
+			},
 		}
 
-		for _, language in ipairs({ "typescript", "javascript", "php" }) do
+		for _, language in ipairs({ "typescript", "javascript", "php", "cpp" }) do
 			dap.configurations[language] = {
 				{
 					type = "pwa-node",
@@ -74,11 +77,12 @@ return {
 					request = "launch",
 					name = "Launch CPP",
 					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+						return vim.fn.input("Path to executable: \n", vim.fn.getcwd() .. "/", "file")
 					end,
-          --program = '${fileDirname}/${fileBasenameNoExtension}',
+			       --program = '${fileDirname}/${fileBasenameNoExtension}',
 					cwd = "${workspaceFolder}",
-          terminal = "integrated",
+          stepOnEntry = false,
+          args = {}
 				},
 			}
 		end
@@ -97,5 +101,6 @@ return {
 		end
 		vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, {})
 		vim.keymap.set("n", "<leader>dc", dap.continue, {})
+    vim.keymap.set("n", "<leader>ds", dap.terminate, {})
 	end,
 }
