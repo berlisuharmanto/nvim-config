@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "eslint", "intelephense", "ts_ls", "clangd"},
+        ensure_installed = { "lua_ls", "eslint", "intelephense", "ts_ls", "clangd" },
       })
     end,
   },
@@ -26,7 +26,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim", -- optional
-      "neovim/nvim-lspconfig",      -- optional
+      "neovim/nvim-lspconfig",         -- optional
     },
     opts = {},
     config = function()
@@ -42,16 +42,7 @@ return {
 
       lspconfig.lua_ls.setup({})
       lspconfig.eslint.setup({})
-      lspconfig.intelephense.setup({
-        settings = {
-          intelephense = {
-            format = {
-              enable = true,
-              braces = "allman",
-            }
-          }
-        }
-      })
+      lspconfig.intelephense.setup({})
       lspconfig.clangd.setup({})
       lspconfig.ts_ls.setup({})
       lspconfig.docker_compose_language_service.setup({})

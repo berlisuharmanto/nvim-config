@@ -1,11 +1,12 @@
 return {
-  "Exafunction/codeium.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "hrsh7th/nvim-cmp",
-  },
+  -- "Exafunction/codeium.nvim",
+  -- dependencies = {
+  --   "nvim-lua/plenary.nvim",
+  --   "hrsh7th/nvim-cmp",
+  -- },
   -- config = function()
-  --   require("codeium").setup({
+  --   local codeium = require("codeium")
+  --   codeium.setup({
   --     -- Optionally disable cmp source if using virtual text only
   --     enable_cmp_source = false,
   --     virtual_text = {
@@ -39,7 +40,7 @@ return {
   --         -- Accept the next line.
   --         accept_line = false,
   --         -- Clear the virtual text.
-  --         clear = false,
+  --         clear = "<M-c>",
   --         -- Cycle to the next completion.
   --         next = "<M-]>",
   --         -- Cycle to the previous completion.
