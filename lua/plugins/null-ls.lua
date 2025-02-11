@@ -7,6 +7,11 @@ return {
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.completion.spell,
+        null_ls.builtins.formatting.blade_formatter.with({
+          filetypes = {
+            "blade",
+          },
+        }),
         null_ls.builtins.formatting.prettier.with({
           filetypes = {
             "html",
@@ -22,8 +27,7 @@ return {
             "markdown.mdx",
             "graphql",
             "handlebars",
-            "php",
-            "blade",
+            "python",
             "less",
             "sass",
             "scss",
@@ -33,10 +37,10 @@ return {
         }),
         -- null_ls.builtins.formatting.phpcsfixer,
         null_ls.builtins.formatting.clang_format,
-        null_ls.builtins.formatting.blade_formatter,
-        require("none-ls.diagnostics.eslint_d")
+        require("none-ls.diagnostics.eslint_d"),
       },
     })
     vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+    vim.lsp.buf.format({ timeout_ms = 5000 })
   end,
 }

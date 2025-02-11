@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "eslint", "intelephense", "ts_ls", "clangd" },
+        ensure_installed = { "lua_ls", "eslint", "intelephense", "ts_ls", "clangd", "pyright" },
       })
     end,
   },
@@ -26,7 +26,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim", -- optional
-      "neovim/nvim-lspconfig",         -- optional
+      "neovim/nvim-lspconfig",      -- optional
     },
     opts = {},
     config = function()
@@ -45,6 +45,7 @@ return {
       lspconfig.intelephense.setup({})
       lspconfig.clangd.setup({})
       lspconfig.ts_ls.setup({})
+      lspconfig.pyright.setup({})
       lspconfig.docker_compose_language_service.setup({})
       lspconfig.dockerls.setup({})
       lspconfig.emmet_language_server.setup({
@@ -67,7 +68,7 @@ return {
         init_options = {
           ---@type table<string, string>
           includeLanguages = {
-            blade = "html"
+            blade = "html",
           },
           --- @type string[]
           excludeLanguages = {},
