@@ -54,6 +54,7 @@ return {
           "html",
           "javascript",
           "javascriptreact",
+          "vue",
           "php",
           "blade",
           "less",

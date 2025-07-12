@@ -15,6 +15,7 @@ return {
             "javascriptreact",
             "typescript",
             "typescriptreact",
+            "vue",
             "json",
             "jsonc",
             "yaml",
