@@ -38,6 +38,7 @@ return {
         require("none-ls.diagnostics.eslint_d")
       },
     })
+    vim.g.lazyvim_prettier_needs_config = false
     vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
   end,
 }
