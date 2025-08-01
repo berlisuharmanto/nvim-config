@@ -26,7 +26,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim", -- optional
-      "neovim/nvim-lspconfig",         -- optional
+      "neovim/nvim-lspconfig",      -- optional
     },
     opts = {},
     config = function()
@@ -68,7 +68,7 @@ return {
         init_options = {
           ---@type table<string, string>
           includeLanguages = {
-            blade = "html"
+            blade = "html",
           },
           --- @type string[]
           excludeLanguages = {},
