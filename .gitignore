@@ -1,0 +1,70 @@
+# ==========================================
+# Neovim & LazyVim .gitignore
+# ==========================================
+
+# LazyVim starter defaults & scratch files
+tt.*
+foo.*
+.tests
+.repro
+debug
+*.log
+data/
+doc/tags
+
+# Neovim swap, backup, and undo files
+*.sw[a-p]
+.*.sw[a-p]
+*.un~
+*.undo
+*.bak
+*~
+
+# Session and ShaDa (history/shared data) files
+Session.vim
+*.Session.vim
+*.shada
+*.shada.tmp.*
+
+# Compiled spell files (keep text *.add files, ignore generated binary *.spl)
+spell/*.add.spl
+spell/*.add.spl.*
+
+# Machine-local / private configuration overrides
+*.local.lua
+local.lua
+lua/**/local.lua
+lua/config/local.lua
+lua/plugins/local.lua
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Omarchy dynamic theme symlink (managed locally by Omarchy theme switcher)
+lua/plugins/theme.lua
+
+# Language server, linter, and runtime caches
+.luarc.json
+.baleia/
+.ropeproject/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.pyc
+node_modules/
+
+# OS / File manager metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Plugin lockfile (uncomment if you prefer not to track exact plugin revisions)
+# lazy-lock.json
