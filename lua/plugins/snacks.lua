@@ -4,5 +4,10 @@ return {
 		scroll = {
 			enabled = false, -- Disable scrolling animations
 		},
+		indent = {
+			animate = {
+				enabled = false, -- Disable bracket/indent lines animation
+			},
+		},
 	},
 }
